@@ -8,7 +8,7 @@ import Theme from '../Theme/Theme';
 function Themes(props) {
 
   const dispatch = useDispatch();
-  const themes = useSelector((state) => state.themeReducer.theme);
+  const themes = useSelector((state) => state.themeReducer.themes);
   
   useEffect(() => {
     fetch('http://localhost:1234/api/questions', { credential: true })
@@ -17,12 +17,12 @@ function Themes(props) {
   }, [dispatch]);
   
 
-  const themeArr = Object.keys(themes).map((theme) => ({ theme: theme, categories: themes[theme].categories }));
-  console.log(themeArr);
+  // const themeArr = Object.keys(themes).map((theme) => ({ theme: theme, categories: themes[theme].categories }));
+  // console.log(themes.themeArray);
 
   return (
     <div className="uk-flex-column">
-      {themeArr.map((el) => {
+      {themes.themeArray.map((el) => {
         return (
         <div className="uk-flex">
         <Theme el={el}/>
