@@ -4,8 +4,7 @@ const session = require('express-session');
 const SessionFileStore = require('session-file-store')(session);
 const logger = require('morgan');
 const dotenv = require('dotenv');
-const userApiRouter = require('./routes/users')
-const taskApiRouter = require('./routes/tasks')
+const questionsApiRouter = require('./routes/questions')
 const cors = require('cors');
 
 dotenv.config();
@@ -48,8 +47,7 @@ server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 
 //Routers
-server.use('/api/users', userApiRouter);
-server.use('/api/tasks', taskApiRouter);
+server.use('/api/questions', questionsApiRouter);
 
 server.listen(PORT, () => {
   console.log(`Server has been listening on ${PORT}`);
