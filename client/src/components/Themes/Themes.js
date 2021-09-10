@@ -21,9 +21,14 @@ function Themes(props) {
   console.log(themeArr);
 
   return (
-    <div className="uk-flex">
+    <div className="uk-flex-column">
       {themeArr.map((el) => {
-        return (<Theme el={el}/>)})}
+        return (
+        <div className="uk-flex">
+        <Theme el={el}/>
+        </div>
+          
+        )})}
       
     </div>
   );
