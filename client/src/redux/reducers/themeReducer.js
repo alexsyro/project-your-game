@@ -5,7 +5,7 @@ const initialSate = { themes: [] };
 function themeReducer(state = initialSate, action) {
   switch (action.type) {
     case CREATE_THEMES:
-      return { themes: action.payload };
+      return { themes: action.payload.themeArray };
 
     case SET_ANSWERED:
       return { SET_ANSWERED };

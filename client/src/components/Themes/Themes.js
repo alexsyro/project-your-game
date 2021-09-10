@@ -13,18 +13,19 @@ function Themes(props) {
   useEffect(() => {
     fetch('http://localhost:1234/api/questions', { credential: true })
     .then((res) => res.json())
+    // .then((data) => console.log(data));
     .then((data) => dispatch({ type: CREATE_THEMES, payload: data }));
   }, [dispatch]);
   
-
+console.log('AAAAAAAAAA', themes);
   // const themeArr = Object.keys(themes).map((theme) => ({ theme: theme, categories: themes[theme].categories }));
   // console.log(themes.themeArray);
 
   return (
     <div className="uk-flex-column">
-      {themes.themeArray.map((el) => {
+      {themes.map((el, index) => {
         return (
-        <div className="uk-flex">
+        <div key={new Date().getTime()+ index} className="uk-flex">
         <Theme el={el}/>
         </div>
           
