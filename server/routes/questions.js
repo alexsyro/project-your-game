@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
     }
   });
   // console.log('AAAAAAAA', responseTheme);
-  res.json({ themes: {...responseTheme} });
+  res.json({ ...responseTheme });
 });
 
 module.exports = router;

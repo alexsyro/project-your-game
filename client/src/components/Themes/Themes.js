@@ -2,27 +2,29 @@
 import React, { useEffect }  from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'; 
+import { CREATE_THEMES } from '../../redux/actionTypes/actionTypes'
+import Theme from '../Theme/Theme';
 
 function Themes(props) {
 
   const dispatch = useDispatch();
-  const themes = useSelector((state) => state.themeReducer.themes);
-
+  const themes = useSelector((state) => state.themeReducer.theme);
+  
   useEffect(() => {
-    fetch('http://localhost:1234/api/questions', { credentials: true })
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: CREATE_THEMES, payload: data }));
+    fetch('http://localhost:1234/api/questions', { credential: true })
+    .then((res) => res.json())
+    .then((data) => dispatch({ type: CREATE_THEMES, payload: data }));
   }, [dispatch]);
+  
 
+  const themeArr = Object.keys(themes).map((theme) => ({ theme: theme, categories: themes[theme].categories }));
+  console.log(themeArr);
 
   return (
     <div className="uk-flex">
+      {themeArr.map((el) => {
+        return (<Theme el={el}/>)})}
       
-      <div class="uk-card uk-card-default uk-card-body">{testObj.themeName}</div>
-      {testObj.categories.map((el) => {
-        return <div class="uk-card uk-card-default uk-card-body">{el.categoryName}</div>
-      })}
-
     </div>
   );
 }
