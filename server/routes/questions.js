@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
   });
   const responseTheme = {};
   const themeArr = themes.map((el) => {
-    console.log(Object.keys(el));
     const themeName = el['Theme.theme_name'];
     const categoryName = el['Category.category_name'];
     const questionText = el['question'];
@@ -42,8 +41,8 @@ router.get('/', async (req, res) => {
       };
     }
   });
-  // console.log('AAAAAAAA', responseTheme);
-  res.json({ ...responseTheme });
+  const themeArray = Object.keys(responseTheme).map(theme => ({theme, categories: responseTheme[theme].categories}))
+  res.json({ themeArray });
 });
 
 module.exports = router;

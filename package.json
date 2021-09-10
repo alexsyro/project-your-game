@@ -1,0 +1,13 @@
+{
+  "name": "project-your-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./server/server.js",
+    "devsrv": "nodemon ./server/server.js --ignore ./server/sessions/",
+    "client": "./client/react-scripts start"
+  },
+  "author": "",
+  "license": "ISC"
+}
