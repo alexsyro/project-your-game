@@ -1,8 +1,10 @@
+import Nav from "../Nav/Nav";
+
 function App() {
   return (
     <>
-      <p></p>
-      <p></p>
+      <Nav />
+
     </>
   );
 }
