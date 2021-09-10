@@ -25,7 +25,7 @@ console.log('AAAAAAAAAA', themes);
     <div className="uk-flex-column">
       {themes.map((el, index) => {
         return (
-        <div key={new Date().getTime()+ index} className="uk-flex">
+        <div key={new Date().getTime() + index} className="uk-flex">
         <Theme el={el}/>
         </div>
           
