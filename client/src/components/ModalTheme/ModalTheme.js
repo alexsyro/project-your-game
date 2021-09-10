@@ -3,15 +3,15 @@ import { useState } from 'react';
 import Modal from '../Modal/Modal';
 
 function Theme({ el }) {
+  // console.log('SSSSSSSSS', el)
   const [modalMode, setModal] = useState(false);
+
   return (
     <>
-      <div className='uk-card uk-card-default uk-card-body'>{el.theme}</div>
       {el.categories.map((question, index) => {
         if (modalMode) {
           return (
             <Modal
-              key={new Date().getDate() + index + 1}
               question={question}
               setModal={setModal}
               theme={el.theme}
@@ -21,7 +21,9 @@ function Theme({ el }) {
         } else {
           if (question.question.isAnswered) {
             return (
-              <div key={new Date().getDate() + index} className='uk-card uk-card-default uk-card-body'></div>
+              <div key={new Date().getDate() + index} className='uk-card uk-card-default uk-card-body'>
+                
+              </div>
             );
           } else {
             return (

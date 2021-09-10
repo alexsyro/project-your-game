@@ -3,10 +3,8 @@ import { useDispatch } from 'react-redux';
 import { SET_ANSWERED } from '../../redux/actionTypes/actionTypes';
 
 function Modal({ question, theme, categoryName, setModal }) {
-
   const dispatch = useDispatch();
   function MakeAnswer(event) {
-    console.log('LLLLLLLLLL', question.question.answer);
     event.preventDefault();
     const answer = event.target.answer.value;
     dispatch({ type: SET_ANSWERED, payload: { theme, category: categoryName } });

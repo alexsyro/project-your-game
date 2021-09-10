@@ -6,14 +6,14 @@ function themeReducer(state = initialSate, action) {
   switch (action.type) {
     case CREATE_THEMES:
       return { themes: action.payload.themeArray };
-
     case SET_ANSWERED:
       return {
         ...state,
         themes: state.themes.map((theme) => {
+          console.log(theme);
           if (theme.theme === action.payload.theme) {
             theme.categories = theme.categories.map((category) => {
-              if (category === action.payload.category) {
+              if (category.categoryName === action.payload.category) {
                 category.question.isAnswered = true;
               }
               return category;
