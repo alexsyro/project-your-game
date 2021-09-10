@@ -19,7 +19,7 @@ function Theme({ el }) {
 
         el.categories.map((question, index) => {
           if (modalMode) {
-            return <Modal el={question} setModal={setModal} theme={el.theme} categoryName={question.categoryName} />
+            return <Modal question={question} setModal={setModal} theme={el.theme} categoryName={question.categoryName} />
           } else {
             return (
             <div onClick={() => setModal(true)}
