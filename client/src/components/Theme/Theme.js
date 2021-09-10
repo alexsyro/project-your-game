@@ -4,6 +4,7 @@ import Modal from '../Modal/Modal';
 
 function Theme({ el }) {
   const [modalMode, setModal] = useState(false);
+  const [currQuestion, setCurrQuestion] = useState(null);
   return (
     <>
       <div className='uk-card uk-card-default uk-card-body'>{el.theme}</div>
@@ -12,10 +13,8 @@ function Theme({ el }) {
           return (
             <Modal
               key={new Date().getDate() + index + 1}
-              question={question}
+              currQuestion={currQuestion}
               setModal={setModal}
-              theme={el.theme}
-              categoryName={question.categoryName}
             />
           );
         } else {
@@ -26,7 +25,10 @@ function Theme({ el }) {
           } else {
             return (
               <div
-                onClick={() => setModal(true)}
+                onClick={() => {
+                  setModal(true);
+                  setCurrQuestion({ theme: el.theme, categoryName: question.categoryName, question });
+                }}
                 key={new Date().getDate() + index}
                 className='uk-card uk-card-default uk-card-body'
               >
