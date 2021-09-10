@@ -8,7 +8,20 @@ function themeReducer(state = initialSate, action) {
       return { themes: action.payload.themeArray };
 
     case SET_ANSWERED:
-      return { SET_ANSWERED };
+      return {
+        ...state,
+        themes: state.themes.map((theme) => {
+          if (theme.theme === action.payload.theme) {
+            theme.categories = theme.categories.map((category) => {
+              if (category === action.payload.category) {
+                category.question.isAnswered = true;
+              }
+              return category;
+            });
+          }
+          return theme;
+        }),
+      };
 
     default:
       return state;
