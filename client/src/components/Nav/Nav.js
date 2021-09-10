@@ -7,9 +7,9 @@ function Nav() {
 
         <ul className="uk-navbar-nav">
           <li>
-            <a>ELBRUS TEAM</a>
+            <a href="#1">ELBRUS TEAM</a>
           </li>
-          
+
         </ul>
 
       </div>

@@ -1,15 +1,39 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
+
 
 function Theme({ el }) {
-  console.log('SSSSSSSSS', el)
+  // console.log('SSSSSSSSS', el)
+  const [modalMode, setModal] = useState(false);
+
+
+
   return (
     <>
-    <div className="uk-card uk-card-default uk-card-body">
-      { el.theme }
-    </div>
-    {el.categories.map((el, index) => {
-      return <div key={new Date().getDate() + index} className="uk-card uk-card-default uk-card-body">{el.categoryName}</div>
-    })}
+      <div className="uk-card uk-card-default uk-card-body">
+        {el.theme}
+      </div>
+
+      {
+
+        el.categories.map((question, index) => {
+          if (modalMode) {
+            return <Modal el={question} setModal={setModal} theme={el.theme} categoryName={question.categoryName} />
+          } else {
+            return (
+            <div onClick={() => setModal(true)}
+              key={new Date().getDate() + index}
+              className="uk-card uk-card-default uk-card-body"
+            >
+              {question.categoryName}
+            </div>
+            )
+          }
+        })
+
+      }
+
     </>
   );
 }
