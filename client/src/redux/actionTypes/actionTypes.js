@@ -1,0 +1,2 @@
+export const CREATE_THEMES = 'CREATE_THEMES';
+export const SET_ANSWERED = 'SET_ANSWERED';
