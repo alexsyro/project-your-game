@@ -18,20 +18,20 @@ router.get('/', async (req, res) => {
     ],
     raw: true,
   });
-  const responseTheme = {};
-  const themeArr = themes.map((el) => {
+  const themeObj = {};
+  themes.forEach((el) => {
     const themeName = el['Theme.theme_name'];
     const categoryName = el['Category.category_name'];
     const questionText = el['question'];
     const answer = el['answer'];
     const isAnswered = el['isAnswered'];
-    if (responseTheme[themeName]) {
-      responseTheme[themeName].categories.push({
+    if (themeObj[themeName]) {
+      themeObj[themeName].categories.push({
         categoryName,
         question: { id: el['id'], text: questionText, answer, isAnswered },
       });
     } else {
-      responseTheme[themeName] = {
+      themeObj[themeName] = {
         categories: [
           {
             categoryName,
@@ -41,8 +41,8 @@ router.get('/', async (req, res) => {
       };
     }
   });
-  const themeArray = Object.keys(responseTheme).map(theme => ({theme, categories: responseTheme[theme].categories}))
-  res.json({ themeArray });
+  const themesArray = Object.keys(themeObj).map(theme => ({theme, categories: themeObj[theme].categories}))
+  res.json({ themeArray: themesArray });
 });
 
 module.exports = router;

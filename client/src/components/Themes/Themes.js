@@ -19,7 +19,7 @@ function Themes() {
     <div className='uk-flex-column'>
       {themes.map((el, index) => {
         return (
-          <div key={new Date().getTime() + index} className='uk-flex'>
+          <div key={new Date().getTime() + index} className='uk-flex uk-child-width-1-4'>
             <Theme el={el} />
           </div>
         );

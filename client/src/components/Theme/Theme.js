@@ -7,20 +7,21 @@ function Theme({ el }) {
   const [currQuestion, setCurrQuestion] = useState(null);
   return (
     <>
-      <div className='uk-card uk-card-default uk-card-body'>{el.theme}</div>
+      <div className='uk-card uk-card-default uk-card-body uk-child-width-1-4 uk-text-danger uk-text-bold'>
+        {el.theme}
+      </div>
       {el.categories.map((question, index) => {
         if (modalMode) {
           return (
-            <Modal
-              key={new Date().getDate() + index + 1}
-              currQuestion={currQuestion}
-              setModal={setModal}
-            />
+            <Modal key={new Date().getDate() + index + 1} currQuestion={currQuestion} setModal={setModal} />
           );
         } else {
           if (question.question.isAnswered) {
             return (
-              <div key={new Date().getDate() + index} className='uk-card uk-card-default uk-card-body'></div>
+              <div
+                key={new Date().getDate() + index}
+                className='uk-card uk-card-default uk-card-body uk-child-width-1-4'
+              ></div>
             );
           } else {
             return (
@@ -30,7 +31,7 @@ function Theme({ el }) {
                   setCurrQuestion({ theme: el.theme, categoryName: question.categoryName, question });
                 }}
                 key={new Date().getDate() + index}
-                className='uk-card uk-card-default uk-card-body'
+                className='uk-card uk-card-default uk-card-body uk-child-width-1-4'
               >
                 {question.categoryName}
               </div>
